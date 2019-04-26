@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>添加角色</title>
+<link rel="stylesheet" th:href="@{static/bootstrap-3.3.7-dist/css/bootstrap.css}"
+	type="text/css"></link>
+<script th:src="@{static/jquery-2.1.4.js}"></script>
+<script th:src="@{static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal col-md-offset-4" role="form"
+				th:action="@{saveRoleEntity}" method="post">
+				<div class="form-group">
+					<label for="roleName" class="col-sm-2 control-label">角色名</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="roleName"
+							name="roleName" placeholder="请输入角色名"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="roleDescribe" class="col-sm-2 control-label">角色描述</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="roleDescribe"
+							name="roleDescribe" placeholder="请输入角色描述"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-4">
+						<button type="submit" class="btn btn-primary">添加角色</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<table class="table table-hover table-bordered">
+					<tr>
+						<th class="col-sm-2">角色名</th>
+						<th class="col-sm-2">角色描述</th>
+						<th class="col-sm-2">删除角色</th>
+						<th class="col-sm-2">维护用户</th>
+						<th class="col-sm-2">维护权限</th>
+					</tr>
+					
+						<tr th:each="role,rolestate:${roleList}">
+							<th class="col-sm-2" th:text="${role.rname}"></th>
+							<th class="col-sm-2" th:text="${role.roleDescribe}"></th>
+							<th class="col-sm-2"><a
+								th:href="@{${role.rid}/deleteRole}"
+								class="btn btn-danger active" role="button">删除角色</a></th>
+							<th class="col-sm-2"><a
+									th:onclick="|javascript:userF('${role.rname}','${role.rid}')|"
+								href="javascript:void(0)"
+								class="btn btn-primary active" role="button">维护用户</a></th>
+							<th class="col-sm-2"><a
+								th:onclick="|javascript:powerF('${role.rname}','${role.rid}')|"
+								href="javascript:void(0)"
+								class="btn btn-primary active" role="button">维护权限</a></th>
+						</tr>
+				
+				</table>
+			</div>
+		</div>
+	</div>
+	    <form th:action="@{goToRoleUser}" method="post" id="gotoRoleUserId" >
+	       <input type="text" id="roleNameId" name="rname"></input>
+			<input type="text" id="roleId" name="rid"></input>
+	    </form>
+	    <form th:action="@{goToRolePower}" method="post" id="gotoRolePowerId">
+	       <input type="text" id="rolePName" name="rname"></input>
+	         <input type="text" id="rolePId" name="rid"></input>
+	    </form>
+	<script type="text/javascript">
+	  
+	   function userF(rname,rid){
+		   //填充表单
+		  $("#roleNameId").val(rname);
+		   $("#roleId").val(rid);
+		   alert(rname);
+		   //提交
+		  $("#gotoRoleUserId").submit();
+	   }
+	   
+	   function powerF(rname,rid){
+		   $("#rolePName").val(rname);
+		   $("#rolePId").val(rid);
+		   alert(rname);
+		   $("#gotoRolePowerId").submit();
+	   }
+	</script>
+</body>
+</html>

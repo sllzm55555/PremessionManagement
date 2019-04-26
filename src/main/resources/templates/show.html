@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>信息展示</title>
+    <script type="text/javascript" th:src="@{static/test.js}"></script>
+</head>
+
+<body>
+    <h1>用户展示</h1>
+    <img th:src="@{static/img/5.png}"></img>
+    <div >
+        <input type="text" th:field="${user.uname}"></input>
+        <input type="text" th:field="${user.upasss}"></input>
+
+    </div>
+    <br></br>
+    <div>
+        <table>
+            <tr><td>用户名</td><td>密码</td></tr>
+            <div th:each="user,trState:${userList}">
+            <tr >
+                <td th:text="${user.uname}"></td>
+                <td th:text="${user.upasss}"></td>
+            </tr>
+            </div>
+        </table>
+    </div>
+</body>
+</html>

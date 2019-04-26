@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+
+	<meta charset="UTF-8"></meta>
+	<title>权限添加</title>
+	<link rel="stylesheet" th:href="@{static/bootstrap-3.3.7-dist/css/bootstrap.css}" type="text/css"></link>
+	<script th:src="@{static/jquery-2.1.4.js}"></script>
+	<script th:src="@{static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal col-md-offset-4" role="form"
+				th:action="@{savePowerEntity}" method="post">
+				<div class="form-group">
+					<label for="powerName" class="col-sm-2 control-label">权限名</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="powerName"
+							name="powerName" placeholder="请输入权限名"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="resourceName" class="col-sm-2 control-label">资源名</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="resourceName"
+							name="resourceName" placeholder="请输入资源名"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-4">
+						<button type="submit" class="btn btn-primary">添加权限</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<table class="table table-hover table-bordered">
+					<tr>
+						<th class="col-sm-2">权限名</th>
+						<th class="col-sm-2">资源名</th>
+						<th class="col-sm-2">删除角色</th>
+					</tr>
+					<div th:each="power,powerState:${powerList}">
+						<tr>
+							<th class="col-sm-2" th:text="${power.pname}"></th>
+							<th class="col-sm-2" th:text="${power.puri}"></th>
+							<th class="col-sm-2"><a th:href="@{/${ power.pid}/deletePower}" class="btn btn-danger active" role="button">删除权限</a></th>
+						</tr>
+					</div>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

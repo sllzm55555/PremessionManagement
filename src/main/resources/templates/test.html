@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--引入HTML标签-->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{static/test.js}"></script>
+</head>
+<body>
+<form th:action="@{saveUser}" method="post" >
+    用户名<input type="text" name="uname"></input>
+    密码 <input type="password" name="upasss"></input>
+    <input type="submit" value="提交" ></input>
+</form>
+</body>
+</html>
