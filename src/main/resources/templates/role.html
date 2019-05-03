@@ -66,11 +66,11 @@
 			</div>
 		</div>
 	</div>
-	    <form th:action="@{goToRoleUser}" method="post" id="gotoRoleUserId" >
+	    <form th:action="@{goToRoleUser}" method="post" hidden="hidden" id="gotoRoleUserId" >
 	       <input type="text" id="roleNameId" name="rname"></input>
 			<input type="text" id="roleId" name="rid"></input>
 	    </form>
-	    <form th:action="@{goToRolePower}" method="post" id="gotoRolePowerId">
+	    <form th:action="@{goToRolePower}" method="post" hidden="hidden" id="gotoRolePowerId">
 	       <input type="text" id="rolePName" name="rname"></input>
 	         <input type="text" id="rolePId" name="rid"></input>
 	    </form>

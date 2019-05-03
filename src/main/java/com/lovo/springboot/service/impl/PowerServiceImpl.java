@@ -51,6 +51,12 @@ public class PowerServiceImpl implements IPowerService {
         return allPowerList;
     }
 
+    /**
+     * 通过用户名字和密码得到该用户拥有的所有权限
+     * @param userName 用户名
+     * @param password 密码
+     * @return
+     */
     @Override
     public List<PowerDto> findPowerDtoListByUserNameAndPassword(String userName, String password) {
 
@@ -62,7 +68,12 @@ public class PowerServiceImpl implements IPowerService {
             for (Object[] objs : list) {
                 PowerDto dto=new PowerDto();
                 dto.setUserName(objs[0].toString());
-                dto.setPowerUri(objs[1].toString());
+                if(null==objs[1]){
+                    dto.setPowerUri(null);
+                }else{
+                    dto.setPowerUri(objs[1].toString());
+                }
+
                 //把List<Object[]> 数据放入到List<PowerDto>
                 listdto.add(dto);
             }

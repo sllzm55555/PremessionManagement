@@ -13,8 +13,15 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserDao userDao;
     @Override
-    public void saveUserEntity(UserEntity userEntity) {
-        userDao.save(userEntity);
+    public String saveUserEntity(UserEntity userEntity) {
+        String num = "";
+        UserEntity entity = userDao.save(userEntity);
+        if(null!=entity){
+            num = "1";
+        }else{
+            num = "0";
+        }
+        return num;
     }
 
     @Override
