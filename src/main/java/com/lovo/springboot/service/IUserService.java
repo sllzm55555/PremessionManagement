@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IUserService {
 
-    public void saveUserEntity(UserEntity userEntity);
+    public String saveUserEntity(UserEntity userEntity);
 
     public List<UserEntity> findAllUser();
 
@@ -22,5 +22,5 @@ public interface IUserService {
      * @param userListOfRole
      * @return
      */
-    public List<UserEntity> getNOUserListByRoleId( List<UserEntity> userListOfRole);
+    public List<UserEntity> getNOUserListByRoleId(List<UserEntity> userListOfRole);
 }

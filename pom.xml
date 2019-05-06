@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lovo</groupId>
-    <artifactId>SpringBootClientJ165</artifactId>
+    <artifactId>PremessionManagement</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>SpringBootClientJ165</name>
+    <name>PremessionManagement</name>
     <description>Demo project for Spring Boot</description>
 
     <!-- lookup parent from repository -->
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <!--<version>5.1.46</version>-->
         </dependency>
         
         <!--thymeleaf模板-->
